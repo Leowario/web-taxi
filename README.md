@@ -1,2 +1,2 @@
 # web-taxi
-This application was create just for traning. provide any location servise 
+This application was create just for traning. It's not provide any location servise 
