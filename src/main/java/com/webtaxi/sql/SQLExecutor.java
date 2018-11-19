@@ -82,24 +82,33 @@ public class SQLExecutor {
         return Optional.empty();
     }
 
-    public static void selectAllFromCustomers() {
-        try (Statement statement = getStatement();
-             ResultSet resultSet = statement.executeQuery(SELECT_ALL_FROM_CUSTOMERS.sql())) {
+    public static void deleteCustomerByLogin(String login) {
+        try (PreparedStatement preparedStatement = getPreparedStatement(DELETE_USER_BY_LOGIN.sql())) {
+            int index = 1;
+            preparedStatement.setString(index, login);
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    private static  void printResultSet(ResultSet resultSet){
-        try {
-            resultSet.next();
+        public static void selectAllFromCustomers() {
+            try (Statement statement = getStatement();
+                 ResultSet resultSet = statement.executeQuery(SELECT_ALL_FROM_CUSTOMERS.sql())) {
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        private static void printResultSet (ResultSet resultSet){
+            try {
+                resultSet.next();
                 System.out.print(resultSet.getString("first_name") + " | ");
                 System.out.print(resultSet.getString("last_name") + " | ");
                 System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-    }
+        }
 //
 //    public static void selectAllAvailableDriversForCustomers(){
 //        try (Statement statement = getStatement();
@@ -110,4 +119,4 @@ public class SQLExecutor {
 //    }
 
 
-}
+    }
