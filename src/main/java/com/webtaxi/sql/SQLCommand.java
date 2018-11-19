@@ -28,7 +28,7 @@ public enum SQLCommand {
     SELECT_ALL_FROM_CUSTOMERS("SELECT * FROM customers"),
     SELECT_CUSTOMER_BY_LOGIN_PASSWORD("SELECT login, first_name,last_name,rating FROM web_taxi.customers " +
             "WHERE login = ? and password = ?"),
-DELETE_USER_BY_LOGIN("DELETE FROM  web_taxi.customers WHERE login=?"),
+    DELETE_USER_BY_LOGIN("DELETE FROM  web_taxi.customers WHERE login=?"),
     SELECT_ALL_FROM_DRIVERS("SELECT * FROM drivers"),
     SELECT_ALL_AVAILABLE_DRIVERS("SELECT first_name,last_name,car_class,car_model,rating" +
             "FROM drivers" +
