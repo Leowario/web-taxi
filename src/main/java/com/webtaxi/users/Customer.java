@@ -37,7 +37,18 @@ public class Customer {
         return rating;
     }
 
-    public Builder builder() {
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
+
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -75,7 +86,6 @@ public class Customer {
 
         public Customer build() {
             Preconditions.checkNotNull(login);
-            Preconditions.checkNotNull(password);
             Preconditions.checkNotNull(firstName);
             Preconditions.checkNotNull(lastName);
             return new Customer(login, password, firstName, lastName, rating);

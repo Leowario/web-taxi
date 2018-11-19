@@ -4,10 +4,10 @@ package com.webtaxi.sql;
  * @author Vitalii Usatiy
  */
 public enum SQLCommand {
-    ADD_CUSTOMER("INSERT INTO drivers.customers(" +
+    ADD_CUSTOMER("INSERT INTO web_taxi.customers(" +
             "login,password,first_name,last_name, rating)" +
             "VALUES (?,?,?,?,?) "),
-    ADD_DRIVER("INSERT INTO drivers.drivers(" +
+    ADD_DRIVER("INSERT INTO web_taxi.drivers(" +
             "first_name,last_name, car_model,car_class, rating, is_free)" +
             "VALUES (?,?,?,?,?,?) "),
     CREATE_TABLE_CUSTOMERS("CREATE TABLE IF NOT EXISTS customers(" +
@@ -24,8 +24,11 @@ public enum SQLCommand {
             "car_model VARCHAR(255) NOT NULL," +
             "car_class VARCHAR(255) NOT NULL," +
             "rating INT(10) NOT NULL," +
-            "is_free BOOLEAN) NOT NULL"),
+            "is_free BOOLEAN)"),
     SELECT_ALL_FROM_CUSTOMERS("SELECT * FROM customers"),
+    SELECT_CUSTOMER_BY_LOGIN_PASSWORD("SELECT login, first_name,last_name,rating FROM web_taxi.customers " +
+            "WHERE login = ? and password = ?"),
+
     SELECT_ALL_FROM_DRIVERS("SELECT * FROM drivers"),
     SELECT_ALL_AVAILABLE_DRIVERS("SELECT first_name,last_name,car_class,car_model,rating" +
             "FROM drivers" +
