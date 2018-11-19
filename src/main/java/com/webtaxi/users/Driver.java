@@ -1,0 +1,84 @@
+package com.webtaxi.users;
+
+import com.google.common.base.Preconditions;
+
+public class Driver {
+    private String firstName;
+    private String lastName;
+    private Car car;
+    private int rating;
+    private boolean isFree;
+
+    public Driver(String firstName, String lastName, Car car, int rating, boolean isFree) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.car = car;
+        this.rating = rating;
+        this.isFree = isFree;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public boolean isFree() {
+        return isFree;
+    }
+
+    public Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private String firstName;
+        private String lastName;
+        private Car car;
+        private int rating;
+        private boolean isFree;
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setCar(Car car) {
+            this.car = car;
+            return this;
+        }
+
+        public Builder setRating(int rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public Builder setFree(boolean free) {
+            isFree = free;
+            return this;
+        }
+
+        public Driver build() {
+            Preconditions.checkNotNull(firstName);
+            Preconditions.checkNotNull(lastName);
+            Preconditions.checkNotNull(car);
+            return new Driver(firstName, lastName, car, rating, isFree);
+        }
+
+    }
+}
