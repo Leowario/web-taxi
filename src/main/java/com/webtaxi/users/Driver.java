@@ -2,7 +2,7 @@ package com.webtaxi.users;
 
 import com.google.common.base.Preconditions;
 
-public class Driver implements Comparable<Driver>{
+public class Driver implements Comparable<Driver> {
     private String firstName;
     private String lastName;
     private Car car;
@@ -43,7 +43,7 @@ public class Driver implements Comparable<Driver>{
 
     @Override
     public int compareTo(Driver o) {
-        return (Integer.compare(o.rating,rating));//highest to up
+        return (Integer.compare(o.rating, rating));//highest to up
     }
 
     public static class Builder {
@@ -96,6 +96,5 @@ public class Driver implements Comparable<Driver>{
             Preconditions.checkNotNull(car);
             return new Driver(firstName, lastName, car, rating, isFree);
         }
-
     }
 }
