@@ -8,10 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
 import static com.webtaxi.sql.SQLCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
+import static com.webtaxi.users.CustomerFactory.createCustomer;
+import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
 
 public class SQLExecutor {
 
@@ -69,12 +72,7 @@ public class SQLExecutor {
             preparedStatement.setString(++index, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            Customer customer = Customer.builder()
-                    .setLogin(resultSet.getString("login"))
-                    .setFirstName(resultSet.getString("first_name"))
-                    .setLastName(resultSet.getString("last_name"))
-                    .setRating(resultSet.getInt("rating"))
-                    .build();
+            Customer customer = createCustomer(resultSet);
             return Optional.of(customer);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,6 +90,18 @@ public class SQLExecutor {
         }
     }
 
+    public static Optional<PriorityQueue<Driver>> selectAllAvailableDriversByCarClass(String carClass) {
+        try (PreparedStatement preparedStatement = getPreparedStatement(SELECT_ALL_AVAILABLE_DRIVERS_BY_CAR_CLASS.sql())) {
+            int index = 1;
+            preparedStatement.setString(index, carClass);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return Optional.of(getDriversQueue(resultSet));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
     public static void selectAllFromCustomers() {
         try (Statement statement = getStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_FROM_CUSTOMERS.sql())) {
@@ -99,26 +109,4 @@ public class SQLExecutor {
             e.printStackTrace();
         }
     }
-
-    private static void printResultSet(ResultSet resultSet) {
-        try {
-            resultSet.next();
-            System.out.print(resultSet.getString("first_name") + " | ");
-            System.out.print(resultSet.getString("last_name") + " | ");
-            System.out.println();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-//
-//    public static void selectAllAvailableDriversForCustomers(){
-//        try (Statement statement = getStatement();
-//             ResultSet resultSet = statement.executeQuery(INNER_JOIN_CUSTOMERS_DRIVERS.sql())) {
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
 }
