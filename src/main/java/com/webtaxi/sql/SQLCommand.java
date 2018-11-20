@@ -19,6 +19,7 @@ public enum SQLCommand {
             "rating INT(10))"),
     CREATE_TABLE_DRIVERS("CREATE TABLE IF NOT EXISTS drivers(" +
             "driv_id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT," +
+
             "first_name VARCHAR(255) NOT NULL UNIQUE," +
             "last_name VARCHAR(255) NOT NULL UNIQUE," +
             "car_model VARCHAR(255) NOT NULL," +
@@ -30,9 +31,10 @@ public enum SQLCommand {
             "WHERE login = ? and password = ?"),
     DELETE_USER_BY_LOGIN("DELETE FROM  web_taxi.customers WHERE login=?"),
     SELECT_ALL_FROM_DRIVERS("SELECT * FROM drivers"),
-    SELECT_ALL_AVAILABLE_DRIVERS("SELECT first_name,last_name,car_class,car_model,rating" +
-            "FROM drivers" +
-            "where is_free = true");
+    SELECT_ALL_AVAILABLE_DRIVERS_BY_CAR_CLASS("SELECT first_name,last_name,car_class,car_model,rating " +
+            "FROM web_taxi.drivers " +
+            "where " +
+            "is_free = true AND car_class = ?");
 
     private final String sql;
 
