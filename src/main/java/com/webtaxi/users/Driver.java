@@ -2,14 +2,14 @@ package com.webtaxi.users;
 
 import com.google.common.base.Preconditions;
 
-public class Driver {
+public class Driver implements Comparable<Driver>{
     private String firstName;
     private String lastName;
     private Car car;
     private int rating;
     private boolean isFree;
 
-    public Driver(String firstName, String lastName, Car car, int rating, boolean isFree) {
+    private Driver(String firstName, String lastName, Car car, int rating, boolean isFree) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.car = car;
@@ -37,8 +37,13 @@ public class Driver {
         return isFree;
     }
 
-    public Builder builder() {
+    public static Builder builder() {
         return new Builder();
+    }
+
+    @Override
+    public int compareTo(Driver o) {
+        return (Integer.compare(o.rating,rating));//highest to up
     }
 
     public static class Builder {
@@ -71,6 +76,18 @@ public class Driver {
         public Builder setFree(boolean free) {
             isFree = free;
             return this;
+        }
+
+        @Override
+        public String toString() {
+            return "Builder{" +
+                    "firstName='" + firstName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", car=" + car +
+                    "," +
+                    " rating=" + rating +
+                    ", isFree=" + isFree +
+                    '}';
         }
 
         public Driver build() {
