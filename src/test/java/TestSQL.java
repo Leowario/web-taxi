@@ -1,16 +1,19 @@
 import com.webtaxi.sql.SQLExecutor;
 import com.webtaxi.users.Customer;
+import com.webtaxi.users.Driver;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
-public class TestSQL {
-
-
+@DisplayName("JDBC API should:")
+class TestSQL {
     @Test
-    public void getUserByLoginAndPassword() throws SQLException {
+    @DisplayName("get User by login")
+    void getUserByLoginAndPassword() throws SQLException {
         Customer roman = Customer.builder()
                 .setLogin("roma")
                 .setPassword("123abc")
@@ -29,6 +32,19 @@ public class TestSQL {
             throw new SQLException();
         }
         SQLExecutor.deleteCustomerByLogin("roma");
+    }
+
+    @Test
+    @DisplayName("get all free drivers by car class")
+    void getAvailableDriversByCarClass() throws SQLException {
+        Optional<PriorityQueue<Driver>> optional = SQLExecutor.selectAllAvailableDriversByCarClass("standard");
+        if (!optional.isPresent()) {
+            throw new SQLException();
+        }
+        PriorityQueue<Driver> drivers = optional.get();
+        while (drivers.iterator().hasNext()) {
+            System.out.println(drivers.poll().getFirstName());
+        }
     }
 }
 
