@@ -9,8 +9,13 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.PriorityQueue;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+/**
+ * @author Vitalii Usatyi
+ */
 @DisplayName("JDBC API should:")
-class TestSQL {
+class JdbcTest {
     @Test
     @DisplayName("get User by login")
     void getUserByLoginAndPassword() throws SQLException {
@@ -27,7 +32,7 @@ class TestSQL {
             Customer customer = optional.get();
             Assertions.assertEquals("Roman", customer.getFirstName());
             Assertions.assertEquals("Momanov", customer.getLastName());
-            System.out.println(customer.toString());
+            Assertions.assertEquals("roma", customer.getLogin());
         } else {
             throw new SQLException();
         }
@@ -35,7 +40,7 @@ class TestSQL {
     }
 
     @Test
-    @DisplayName("get all free drivers by car class")
+    @DisplayName("get all available drivers by car class")
     void getAvailableDriversByCarClass() throws SQLException {
         Optional<PriorityQueue<Driver>> optional = SQLExecutor.selectAllAvailableDriversByCarClass("standard");
         if (!optional.isPresent()) {
@@ -43,7 +48,11 @@ class TestSQL {
         }
         PriorityQueue<Driver> drivers = optional.get();
         while (drivers.iterator().hasNext()) {
-            System.out.println(drivers.poll().getFirstName());
+            Driver currentDriver = checkNotNull(drivers.poll());
+            System.out.print(currentDriver.getFirstName() + " || ");
+            System.out.print(currentDriver.getCar().getCarClass() + " || ");
+            System.out.print(currentDriver.getRating() + " || ");
+            System.out.println();
         }
     }
 }
