@@ -34,7 +34,14 @@ public enum SQLCommand {
     SELECT_ALL_AVAILABLE_DRIVERS_BY_CAR_CLASS("SELECT first_name,last_name,car_class,car_model,rating " +
             "FROM web_taxi.drivers " +
             "where " +
-            "is_free = true AND car_class = ?");
+            "is_free = true AND car_class = ?"),
+    SELECT_ROUTE_HISTORY_OF_CUSTOMER("SELECT start_pont, end_point," +
+            "drivers.first_name,drivers.last_name," +
+            "drivers.car_model,drivers.car_class," +
+            "drivers.rating " +
+            "FROM web_taxi.route_history AS rh, web_taxi.drivers " +
+            "WHERE rh.customer_id = ? " +
+            "AND rh.driver_id = web_taxi.drivers.driv_id");
 
     private final String sql;
 
