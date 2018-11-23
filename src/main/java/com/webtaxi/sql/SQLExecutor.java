@@ -16,6 +16,9 @@ import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 import static com.webtaxi.users.CustomerFactory.createCustomer;
 import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
 
+/**
+ * @author Vitalii Usatyi
+ */
 public class SQLExecutor {
 
     public static void createTableCustomers() {

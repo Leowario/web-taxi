@@ -1,5 +1,8 @@
 package com.webtaxi.users;
 
+/**
+ * @author Vitalii Usatyi
+ */
 public class Car {
     private String carModel;
     private String carClass;

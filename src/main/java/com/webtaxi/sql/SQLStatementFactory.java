@@ -8,6 +8,9 @@ import java.sql.Statement;
 import static com.webtaxi.sql.SQLConnectionFactory.getConnection;
 import static com.webtaxi.sql.SQLDriver.addDriverSQLToClassPath;
 
+/**
+ * @author Vitalii Usatyi
+ */
 class SQLStatementFactory {
 
     static Statement getStatement() throws SQLException {

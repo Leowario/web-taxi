@@ -2,6 +2,9 @@ package com.webtaxi.users;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * @author Vitalii Usatyi
+ */
 public class Driver implements Comparable<Driver> {
     private String firstName;
     private String lastName;

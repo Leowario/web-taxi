@@ -3,6 +3,11 @@ package com.webtaxi.users;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author Vitalii Usatiy
+ * <p>
+ * Creates a Customer by resultSet of executed SQL query.
+ */
 public class CustomerFactory {
     private CustomerFactory() {
 
