@@ -54,7 +54,7 @@ public class Driver implements Comparable<Driver> {
         return "Driver{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", car=" + car +
+                ", car=" + car.toString() +
                 ", rating=" + rating +
                 ", isFree=" + isFree +
                 '}';

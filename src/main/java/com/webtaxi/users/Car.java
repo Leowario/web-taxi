@@ -19,4 +19,12 @@ public class Car {
     public String getCarClass() {
         return carClass;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "carModel='" + carModel + '\'' +
+                ", carClass='" + carClass + '\'' +
+                '}';
+    }
 }
