@@ -49,6 +49,17 @@ public class Driver implements Comparable<Driver> {
         return (Integer.compare(o.rating, rating));//highest to up
     }
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", car=" + car +
+                ", rating=" + rating +
+                ", isFree=" + isFree +
+                '}';
+    }
+
     public static class Builder {
         private String firstName;
         private String lastName;
@@ -79,18 +90,6 @@ public class Driver implements Comparable<Driver> {
         public Builder setFree(boolean free) {
             isFree = free;
             return this;
-        }
-
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", car=" + car +
-                    "," +
-                    " rating=" + rating +
-                    ", isFree=" + isFree +
-                    '}';
         }
 
         public Driver build() {
