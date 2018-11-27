@@ -15,6 +15,7 @@ public class CustomerFactory {
 
     public static Customer createCustomer(ResultSet resultSet) throws SQLException {
         return Customer.builder()
+                .setCustId(resultSet.getInt("cust_id"))
                 .setLogin(resultSet.getString("login"))
                 .setFirstName(resultSet.getString("first_name"))
                 .setLastName(resultSet.getString("last_name"))
