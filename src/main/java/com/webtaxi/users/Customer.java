@@ -6,13 +6,15 @@ import com.google.common.base.Preconditions;
  * @author Vitalii Usatyi
  */
 public class Customer {
+    private int custId;
     private String login;
     private String password;
     private String firstName;
     private String lastName;
     private int rating;
 
-    public Customer(String login, String password, String firstName, String lastName, int rating) {
+    public Customer(int custId, String login, String password, String firstName, String lastName, int rating) {
+        this.custId = custId;
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -43,7 +45,8 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "login='" + login + '\'' +
+                "custId=" + custId +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -56,11 +59,18 @@ public class Customer {
     }
 
     public static class Builder {
+
+        private int custId;
         private String login;
         private String password;
         private String firstName;
         private String lastName;
         private int rating;
+
+        public Builder setCustId(int custId) {
+            this.custId = custId;
+            return this;
+        }
 
         public Builder setLogin(String login) {
             this.login = login;
@@ -91,7 +101,7 @@ public class Customer {
             Preconditions.checkNotNull(login);
             Preconditions.checkNotNull(firstName);
             Preconditions.checkNotNull(lastName);
-            return new Customer(login, password, firstName, lastName, rating);
+            return new Customer(custId, login, password, firstName, lastName, rating);
         }
 
     }
