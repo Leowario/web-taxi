@@ -1,12 +1,12 @@
 package com.webtaxi.sql;
 
-import com.webtaxi.users.Customer;
-import com.webtaxi.users.Driver;
+import com.webtaxi.users.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Optional;
 import java.util.PriorityQueue;
 
@@ -108,6 +108,50 @@ public class SQLExecutor {
     public static void selectAllFromCustomers() {
         try (Statement statement = getStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_FROM_CUSTOMERS.sql())) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createTableRouteHistory() {
+        try (Statement statement = getStatement()) {
+            statement.execute(CREATE_TABLE_ROUTE_HISTORY.sql());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addRouteToRouteHistory(Route route) {
+        try (PreparedStatement preparedStatement = getPreparedStatement(ADD_ROUTE_TO_ROUTE_HISTORY.sql())) {
+            int index = 1;
+            preparedStatement.setInt(index, route.getCustomerId());
+            preparedStatement.setInt(++index, route.getDriverId());
+            preparedStatement.setString(++index, route.getStartPoint());
+            preparedStatement.setString(++index, route.getEndPoint());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Optional<List<RouteHistory>> selectAllRouteHistoryOfCustomer(int customerId) {
+        try (PreparedStatement preparedStatement = getPreparedStatement(SELECT_ROUTE_HISTORY_OF_CUSTOMER.sql())) {
+            int index = 1;
+            preparedStatement.setInt(index, customerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<RouteHistory> routeList = RouteHistoryFactory.getRouteList(resultSet);
+            return Optional.of(routeList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
+    public static void deleteRouteByStartPoint(String startPoint) {
+        try (PreparedStatement preparedStatement = getPreparedStatement(DELETE_ROUTE_BY_ID.sql())) {
+            int index = 1;
+            preparedStatement.setString(index, startPoint);
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
