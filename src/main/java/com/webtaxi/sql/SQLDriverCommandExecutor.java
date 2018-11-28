@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Optional;
 import java.util.PriorityQueue;
 
-import static com.webtaxi.sql.SQLCommand.*;
+import static com.webtaxi.sql.SQLDriverCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
@@ -17,7 +17,7 @@ import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLDriverCommandExecutor extends SQLExecutor {
+public class SQLDriverCommandExecutor {
 
     private SQLDriverCommandExecutor() {
 

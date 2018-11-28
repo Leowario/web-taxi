@@ -11,14 +11,14 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
-import static com.webtaxi.sql.SQLCommand.*;
+import static com.webtaxi.sql.SQLRouteHistoryCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 
 /**
  * @author Vitalii Usatyi
  */
-public class SQLRouteHistoryCommandExecutor extends SQLExecutor {
+public class SQLRouteHistoryCommandExecutor {
 
     private SQLRouteHistoryCommandExecutor() {
 

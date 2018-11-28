@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
 
-import static com.webtaxi.sql.SQLCommand.*;
+import static com.webtaxi.sql.SQLCustomerCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 import static com.webtaxi.users.CustomerFactory.createCustomer;
@@ -16,7 +16,7 @@ import static com.webtaxi.users.CustomerFactory.createCustomer;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLCustomerCommandExecutor extends SQLExecutor {
+public class SQLCustomerCommandExecutor {
 
     private SQLCustomerCommandExecutor() {
 
