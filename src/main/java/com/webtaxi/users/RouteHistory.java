@@ -3,7 +3,7 @@ package com.webtaxi.users;
 /**
  * @author Vitalii Usatyi
  * <p>
- * It's form for showing route to customer
+ * This is a form for showing route to customer
  */
 public class RouteHistory {
     private String startPoint;
