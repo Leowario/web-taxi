@@ -13,6 +13,13 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.webtaxi.sql.SQLCustomerCommandExecutor.addCustomer;
+import static com.webtaxi.sql.SQLCustomerCommandExecutor.deleteCustomerByLogin;
+import static com.webtaxi.sql.SQLCustomerCommandExecutor.selectCustomerByLoginAndPassword;
+import static com.webtaxi.sql.SQLDriverCommandExecutor.selectAllAvailableDriversByCarClass;
+import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.addRouteToRouteHistory;
+import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.deleteRouteByStartPoint;
+import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.selectAllRouteHistoryOfCustomer;
 
 /**
  * @author Vitalii Usatyi
@@ -29,29 +36,31 @@ class JdbcTest {
                 .setLastName("Momanov")
                 .setRating(5)
                 .build();
-        SQLExecutor.deleteCustomerByLogin("roma");
-        SQLExecutor.addCustomer(roman);
-        Optional<Customer> optional = SQLExecutor.selectCustomerByLoginAndPassword("roma", "123abc");
+        deleteCustomerByLogin("roma");
+        addCustomer(roman);
+        Optional<Customer> optional = selectCustomerByLoginAndPassword("roma", "123abc");
         if (optional.isPresent()) {
             Customer customer = optional.get();
             Assertions.assertEquals("Roman", customer.getFirstName());
             Assertions.assertEquals("Momanov", customer.getLastName());
             Assertions.assertEquals("roma", customer.getLogin());
+            System.out.println("Selected customer:");
             System.out.println(customer.toString());
         } else {
             throw new SQLException();
         }
-        SQLExecutor.deleteCustomerByLogin("roma");
+        deleteCustomerByLogin("roma");
     }
 
     @Test
     @DisplayName("get all available drivers by car class")
     void getAvailableDriversByCarClass() throws SQLException {
-        Optional<PriorityQueue<Driver>> optional = SQLExecutor.selectAllAvailableDriversByCarClass("standard");
+        Optional<PriorityQueue<Driver>> optional = selectAllAvailableDriversByCarClass("standard");
         if (!optional.isPresent()) {
             throw new SQLException();
         }
         PriorityQueue<Driver> drivers = optional.get();
+        System.out.println("Available drivers: ");
         while (drivers.iterator().hasNext()) {
             Driver currentDriver = checkNotNull(drivers.poll());
             Assertions.assertEquals("standard", currentDriver.getCar().getCarClass());
@@ -73,8 +82,8 @@ class JdbcTest {
                 .setStartPoint(startPoint)
                 .setEndPoint(endPoint)
                 .build();
-        SQLExecutor.addRouteToRouteHistory(newRote);
-        Optional<List<RouteHistory>> optional = SQLExecutor.selectAllRouteHistoryOfCustomer(9);
+        addRouteToRouteHistory(newRote);
+        Optional<List<RouteHistory>> optional = selectAllRouteHistoryOfCustomer(9);
         if (!optional.isPresent()) {
             throw new SQLException();
         }
@@ -82,8 +91,9 @@ class JdbcTest {
         for (RouteHistory route : routeHistories) {
             Assertions.assertEquals(startPoint, route.getStartPoint());
             Assertions.assertEquals(endPoint, route.getEndPoint());
+            System.out.println("Route History:");
             System.out.println(route.getStartPoint() + "  " + route.getEndPoint() + " " + route.getDriver().toString());
         }
-        SQLExecutor.deleteRouteByStartPoint("test");
+        deleteRouteByStartPoint("test");
     }
 }
