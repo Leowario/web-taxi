@@ -1,4 +1,3 @@
-import com.webtaxi.sql.SQLExecutor;
 import com.webtaxi.users.Customer;
 import com.webtaxi.users.Driver;
 import com.webtaxi.users.Route;
@@ -13,13 +12,9 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.addCustomer;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.deleteCustomerByLogin;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.selectCustomerByLoginAndPassword;
+import static com.webtaxi.sql.SQLCustomerCommandExecutor.*;
 import static com.webtaxi.sql.SQLDriverCommandExecutor.selectAllAvailableDriversByCarClass;
-import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.addRouteToRouteHistory;
-import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.deleteRouteByStartPoint;
-import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.selectAllRouteHistoryOfCustomer;
+import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.*;
 
 /**
  * @author Vitalii Usatyi
