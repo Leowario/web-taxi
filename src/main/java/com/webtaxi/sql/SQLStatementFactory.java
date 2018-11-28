@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static com.webtaxi.sql.SQLConnectionFactory.getConnection;
-import static com.webtaxi.sql.SQLDriver.addDriverSQLToClassPath;
+import static com.webtaxi.sql.SQLDriverJdbc.addDriverSQLToClassPath;
 
 /**
  * @author Vitalii Usatyi
