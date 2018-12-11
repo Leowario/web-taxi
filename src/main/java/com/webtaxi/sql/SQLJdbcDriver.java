@@ -3,7 +3,7 @@ package com.webtaxi.sql;
 /**
  * @author Vitalii Usatyi
  */
-class SQLDriverJdbc {
+class SQLJdbcDriver {
     static void addDriverSQLToClassPath() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
