@@ -22,7 +22,7 @@ import static com.webtaxi.sql.SQLCustomerCommandExecutor.selectCustomerByLoginAn
 )
 public class SignInServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         Optional<Customer> optional = selectCustomerByLoginAndPassword(login, password);
@@ -31,7 +31,8 @@ public class SignInServlet extends HttpServlet {
             RequestDispatcher view = req.getRequestDispatcher("customerProfile.jsp");
             view.forward(req, resp);
         } else {
-            //TODO
+            resp.setContentType("text/html");
+            //TODO inform user that login and password is incorrect
         }
     }
 }
