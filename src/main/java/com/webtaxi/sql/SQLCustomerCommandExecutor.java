@@ -31,7 +31,7 @@ public class SQLCustomerCommandExecutor {
         }
     }
 
-    public static void addCustomer(Customer customer) {
+    public static boolean addCustomer(Customer customer) {
         try (PreparedStatement preparedStatement = getPreparedStatement(ADD_CUSTOMER.sql())) {
             int index = 1;
             preparedStatement.setString(index, customer.getLogin());
@@ -40,9 +40,11 @@ public class SQLCustomerCommandExecutor {
             preparedStatement.setString(++index, customer.getLastName());
             preparedStatement.setInt(++index, customer.getRating());
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static Optional<Customer> selectCustomerByLoginAndPassword(String login, String password) {
