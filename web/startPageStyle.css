@@ -22,7 +22,10 @@ body {
 }
 
 .button {
+    border: 1px solid #eeeeee;
     margin: 15px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 10px;
+    background: #eee;
+    cursor: pointer;
 }
