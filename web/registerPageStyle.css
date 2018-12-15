@@ -14,6 +14,7 @@ body {
 }
 
 .content {
+    text-align: center;
     padding-bottom: 10px;
     border-radius: 10px;
     color: white;
@@ -26,20 +27,21 @@ body {
 
 input {
     padding-left: 0;
-    margin-right: 250px;
+    margin-right: 255px;
 }
 
-p {
+form {
     text-align: right;
+}
+p {
 }
 
 .button {
     border: 1px solid #eeeeee;
-    margin-left: 320px;
     border-radius: 3px;
     padding: 7px 14px;
+    margin-right: 300px;
+    margin-bottom: 15px;
     background: #eee;
-    cursor: pointer;
+
 }
-
-
