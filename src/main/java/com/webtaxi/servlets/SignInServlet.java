@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
+import static com.webtaxi.servlets.ResponseContentTypeSetter.setContentType;
 import static com.webtaxi.sql.SQLCustomerCommandExecutor.selectCustomerByLoginAndPassword;
 
+/**
+ * @author Vitalii Usatyi
+ */
 @WebServlet(
         name = "SignIn",
         urlPatterns = "/signIn"
@@ -22,12 +26,10 @@ public class SignInServlet extends HttpServlet {
         String password = req.getParameter("password");
         Optional<Customer> optional = selectCustomerByLoginAndPassword(login, password);
         if (optional.isPresent()) {
-            resp.setContentType("text/plain");
-            resp.setCharacterEncoding("UTF-8");
+            setContentType(resp);
             resp.getWriter().write("Success");
         } else {
-            resp.setContentType("text/plain");
-            resp.setCharacterEncoding("UTF-8");
+            setContentType(resp);
             resp.getWriter().write("Incorrect login or password");
         }
     }
