@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="registerPageStyle.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).on("submit", "#signUpForm", function (event) {
+            var $form = $(this);
+            $.post($form.attr("action"), $form.serialize(), function (responseText) {
+                $("#responseDiv").text(responseText);
+                if (responseText === "Registration complete") {
+                    window.location.href = "startPage.html";
+                }
+            });
+            event.preventDefault();//Prevents submitting the form.
+        });
+    </script>
+</head>
+<body>
+<div class="title">
+    <h1>Registration</h1>
+</div>
+<div class="content">
+    <form id="signUpForm" method="post" action="/singUp">
+        <p>Login: <input required type="text" name="login" style="margin-top: 20px"></p>
+        <p>Password:<input required type="password" name="password"></p>
+        <p>First name:<input required type="text" name="firstName"></p>
+        <p>Last name:<input required type="text" name="lastName"></p>
+        <button type="submit" class="button">Sing Up</button>
+        <a href="startPage.html">
+            <button type="button" class="button" style="margin-right: 309px">Beck</button>
+        </a>
+    </form>
+</div>
+<div id="responseDiv" class="content" style="text-align: center"></div>
+</body>
+</html>
