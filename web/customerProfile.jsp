@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Your profile</title>
+
     <link rel="stylesheet" href="customerProfileStyle.css">
 </head>
 <body>
@@ -22,6 +23,7 @@
     }
 %>
 <div class="content">
+    <img src="user-icon-image-placeholder.jpg">
     <p>First Name : <%= customer.getFirstName()%>
     </p>
     <p>Last Name : <%=customer.getLastName()%>
@@ -30,6 +32,8 @@
     </p>
     <p>Rating : <%=customer.getRating()%>
     </p>
+    <button class="button">Order Taxi</button>
+    <button class="button">Route history</button>
 </div>
 </body>
 </html>

@@ -8,8 +8,19 @@ body {
 
 .content {
     text-align: center;
+    padding-top: 20px;
     padding-bottom: 10px;
+    padding-left: 20px;
     border-radius: 10px;
     color: white;
     background: #636363;
+}
+
+.button {
+    border: 1px solid #eeeeee;
+    margin: 15px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background: #eee;
+    cursor: pointer;
 }
