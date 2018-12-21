@@ -17,9 +17,9 @@ import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLDriverCommandExecutor {
+public class SQLDriverFacade {
 
-    private SQLDriverCommandExecutor() {
+    private SQLDriverFacade() {
 
     }
 

@@ -16,9 +16,9 @@ import static com.webtaxi.users.CustomerFactory.createCustomer;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLCustomerCommandExecutor {
+public class SQLCustomerFacade {
 
-    private SQLCustomerCommandExecutor() {
+    private SQLCustomerFacade() {
 
     }
 
