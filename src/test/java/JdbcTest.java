@@ -12,8 +12,8 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.*;
-import static com.webtaxi.sql.SQLDriverCommandExecutor.selectAllAvailableDriversByCarClass;
+import static com.webtaxi.sql.SQLCustomerFacade.*;
+import static com.webtaxi.sql.SQLDriverFacade.selectAllAvailableDriversByCarClass;
 import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.*;
 
 /**
