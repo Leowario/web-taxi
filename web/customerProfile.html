@@ -17,6 +17,7 @@
                 $("#lastName").text(responseJson["lastName"]);
                 $("#login").text(responseJson["login"]);
                 $("#rating").text(responseJson["rating"]);
+                sessionStorage.setItem("custId", responseJson["custId"])
             })
         });
 
@@ -40,8 +41,9 @@
     <button class="button" type="button">
         Order Taxi
     </button>
-    <button class="button">Route history</button>
+    <a href="routeHistory.html">
+        <button class="button">Route history</button>
+    </a>
 </div>
-</body>
 </body>
 </html>
