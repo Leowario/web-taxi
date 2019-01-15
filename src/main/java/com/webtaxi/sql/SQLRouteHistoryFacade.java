@@ -18,9 +18,9 @@ import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLRouteHistoryCommandExecutor {
+public class SQLRouteHistoryFacade {
 
-    private SQLRouteHistoryCommandExecutor() {
+    private SQLRouteHistoryFacade() {
 
     }
 
