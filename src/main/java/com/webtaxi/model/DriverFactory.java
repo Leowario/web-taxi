@@ -13,6 +13,7 @@ public class DriverFactory {
 
     public static Driver createDriver(ResultSet resultSet) throws SQLException {
         return Driver.builder()
+                .setDrivId(resultSet.getInt("driv_id"))
                 .setFirstName(resultSet.getString("first_name"))
                 .setLastName(resultSet.getString("last_name"))
                 .setCar(new Car(

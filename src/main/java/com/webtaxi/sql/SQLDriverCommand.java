@@ -14,7 +14,7 @@ public enum SQLDriverCommand {
             "rating INT(10) NOT NULL," +
             "is_free BOOLEAN)"),
     SELECT_ALL_FROM_DRIVERS("SELECT * FROM drivers"),
-    SELECT_ALL_AVAILABLE_DRIVERS_BY_CAR_CLASS("SELECT first_name,last_name,car_class,car_model,rating " +
+    SELECT_ALL_AVAILABLE_DRIVERS_BY_CAR_CLASS("SELECT driv_id, first_name,last_name,car_class,car_model,rating " +
             "FROM web_taxi.drivers " +
             "where " +
             "is_free = true AND car_class = ?");
