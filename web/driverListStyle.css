@@ -1,0 +1,44 @@
+body {
+    background-image: url("Asphalt.jpg");
+    min-width: 400px;
+    max-width: 700px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+select {
+    border: #636363;
+    background: #636363;
+    font-size: 20px;
+    color: white;
+    margin: 10px;
+    width: 600px;
+    height: 150px;
+}
+
+button {
+    border: 1px solid #eeeeee;
+    margin: 15px;
+    border-radius: 3px;
+    padding: 15px 40px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.content {
+    padding-bottom: 0;
+    border-radius: 10px;
+    color: white;
+    background: #636363;
+}
+
+.title {
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background: gray;
+}
