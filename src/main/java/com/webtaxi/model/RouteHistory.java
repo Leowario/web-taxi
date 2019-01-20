@@ -1,4 +1,4 @@
-package com.webtaxi.users;
+package com.webtaxi.model;
 
 /**
  * @author Vitalii Usatyi

@@ -2,7 +2,7 @@ package com.webtaxi.servlets;
 
 import com.google.gson.Gson;
 import com.webtaxi.sql.SQLCustomerFacade;
-import com.webtaxi.users.Customer;
+import com.webtaxi.model.Customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

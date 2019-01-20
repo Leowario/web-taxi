@@ -2,7 +2,7 @@ package com.webtaxi.servlets;
 
 import com.google.gson.Gson;
 import com.webtaxi.sql.SQLRouteHistoryFacade;
-import com.webtaxi.users.RouteHistory;
+import com.webtaxi.model.RouteHistory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

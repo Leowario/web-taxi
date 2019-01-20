@@ -1,8 +1,8 @@
 package com.webtaxi.sql;
 
-import com.webtaxi.users.Route;
-import com.webtaxi.users.RouteHistory;
-import com.webtaxi.users.RouteHistoryFactory;
+import com.webtaxi.model.Route;
+import com.webtaxi.model.RouteHistory;
+import com.webtaxi.model.RouteHistoryFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

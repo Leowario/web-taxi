@@ -1,4 +1,4 @@
-package com.webtaxi.users;
+package com.webtaxi.model;
 
 public class Order {
     private String startPoint;

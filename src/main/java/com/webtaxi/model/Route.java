@@ -1,4 +1,4 @@
-package com.webtaxi.users;
+package com.webtaxi.model;
 
 import com.google.common.base.Preconditions;
 

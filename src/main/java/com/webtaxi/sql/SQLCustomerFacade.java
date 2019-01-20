@@ -1,6 +1,6 @@
 package com.webtaxi.sql;
 
-import com.webtaxi.users.Customer;
+import com.webtaxi.model.Customer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.util.Optional;
 import static com.webtaxi.sql.SQLCustomerCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
-import static com.webtaxi.users.CustomerFactory.createCustomer;
+import static com.webtaxi.model.CustomerFactory.createCustomer;
 
 /**
  * @author Vitalii Usatyi
