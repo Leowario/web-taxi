@@ -9,7 +9,7 @@ public enum SQLRouteHistoryCommand {
             "FOREIGN KEY (driver_id) references drivers(driv_id) on delete cascade," +
             "start_point  VARCHAR(255) NOT NULL," +
             "end_point   VARCHAR(255) NOT NULL)"),
-    SELECT_ROUTE_HISTORY_OF_CUSTOMER("SELECT start_point, end_point,drivers.first_name," +
+    SELECT_ROUTE_HISTORY_OF_CUSTOMER("SELECT driv_id, start_point, end_point,drivers.first_name," +
             "drivers.last_name ,drivers.rating," +
             " drivers.car_model," +
             "drivers.car_class FROM route_history , drivers " +
