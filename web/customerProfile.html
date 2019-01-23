@@ -10,7 +10,6 @@
             login: sessionStorage.getItem("login"),
             password: sessionStorage.getItem("password"),
         };
-
         $(document).ready(function () {
             $.get("/customerProfile", $.param(data), function (responseJson) {
                 $("#firstName").text(responseJson["firstName"]);
