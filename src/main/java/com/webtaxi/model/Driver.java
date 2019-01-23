@@ -1,4 +1,4 @@
-package com.webtaxi.users;
+package com.webtaxi.model;
 
 import com.google.common.base.Preconditions;
 
@@ -6,18 +6,24 @@ import com.google.common.base.Preconditions;
  * @author Vitalii Usatyi
  */
 public class Driver implements Comparable<Driver> {
+    private int drivId;
     private String firstName;
     private String lastName;
     private Car car;
     private int rating;
     private boolean isFree;
 
-    private Driver(String firstName, String lastName, Car car, int rating, boolean isFree) {
+    private Driver(int drivId, String firstName, String lastName, Car car, int rating, boolean isFree) {
+        this.drivId = drivId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.car = car;
         this.rating = rating;
         this.isFree = isFree;
+    }
+
+    public int getDrivId() {
+        return drivId;
     }
 
     public String getFirstName() {
@@ -61,11 +67,17 @@ public class Driver implements Comparable<Driver> {
     }
 
     public static class Builder {
+        private int drivId;
         private String firstName;
         private String lastName;
         private Car car;
         private int rating;
         private boolean isFree;
+
+        public Builder setDrivId(int drivId) {
+            this.drivId = drivId;
+            return this;
+        }
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
@@ -96,7 +108,7 @@ public class Driver implements Comparable<Driver> {
             Preconditions.checkNotNull(firstName);
             Preconditions.checkNotNull(lastName);
             Preconditions.checkNotNull(car);
-            return new Driver(firstName, lastName, car, rating, isFree);
+            return new Driver(drivId, firstName, lastName, car, rating, isFree);
         }
     }
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check for Details</title>
+    <link rel="stylesheet" href="orderTaxiStyle.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#startPoint").text(sessionStorage.getItem("startPoint"));
+            $("#endPoint").text(sessionStorage.getItem("endPoint"));
+            $("#taxiClass").text(sessionStorage.getItem("taxiClass"));
+
+        });
+
+        function orderTaxi() {
+            let data = {
+                customerId: sessionStorage.getItem("custId"),
+                driverId: sessionStorage.getItem("driverId"),
+                startPoint: sessionStorage.getItem("startPoint"),
+                endPoint: sessionStorage.getItem("endPoint")
+            };
+            $.post("/orderTaxi", $.param(data), function (responseJson) {
+                switch (responseJson) {
+                    case "Success":
+                        sessionStorage.setItem("result", "Request has been send. Have a nice trip ! ");
+                        window.location.href = "resultPage.html";
+                        break;
+                    case "Error":
+                        sessionStorage.setItem("result", "Data base error, please try later");
+                        window.location.href = "resultPage.html";
+                        break;
+                    default:
+                        sessionStorage.setItem("result", "Internal error, please try later");
+                        window.location.href = "resultPage.html";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="title"><h1>Your trip</h1></div>
+<div id="responseDiv" class="content"></div>
+<div class="content">
+    <p style="padding-top: 20px">Start point:
+        <t id="startPoint"></t>
+    </p>
+    <p>End point:
+        <t id="endPoint"></t>
+    </p>
+    <p>Class:
+        <t id="taxiClass"></t>
+    </p>
+    <a href="routeDetails.html">
+        <button>Change destination</button>
+    </a>
+    <br>
+    <a href="driverList.html">
+        <button>Change driver</button>
+    </a>
+    <br>
+    <button onclick="orderTaxi()" type="button" style="background: red">Order a taxi</button>
+</div>
+</body>
+</html>

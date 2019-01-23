@@ -1,4 +1,4 @@
-package com.webtaxi.users;
+package com.webtaxi.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

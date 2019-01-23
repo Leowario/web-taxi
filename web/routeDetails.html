@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Order a Taxi</title>
+    <link rel="stylesheet" href="routeDetailsStyle.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).on("submit", "#orderForm", function (event) {
+            var $form = $(this);
+            $.post($form.attr("action"), $form.serialize(), function (responseText) {
+                $("#responseDiv").text(responseText);
+                if (responseText === "Success") {
+                    sessionStorage.setItem("startPoint", $("#startPoint").val());
+                    sessionStorage.setItem("endPoint", $("#endPoint").val());
+                    sessionStorage.setItem("taxiClass", $("#taxiClass").val());
+                    window.location.href = "driverList.html";
+                } else {
+                    $("#error-panel").text("Internal error, please try later")
+                }
+            });
+            event.preventDefault();//Prevents submitting the form.
+        });
+    </script>
+</head>
+<body>
+<div class="content" id="error-panel"></div>
+<div class="content">
+    <h1>Route details</h1>
+    <form id="orderForm" method="post" action="/routeDetails">
+        <h3 style="padding-top: 5px" class="description">
+            Start point:
+            <input required type="text" name="startPoint" id="startPoint" style="margin: 0">
+        </h3>
+        <h3 class="description">
+            End point:
+            <input required type="text" id="endPoint" name="endPoint">
+        </h3>
+        <h3 style="margin-bottom: 0px; margin-right: 108px">
+            Class:
+            <label>
+                <select name="taxiClass" id="taxiClass" size="1" style="margin-bottom: 10px ">
+                    <option>ECONOMY</option>
+                    <option>STANDARD</option>
+                    <option>BUSINESS</option>
+                </select>
+            </label>
+        </h3>
+        <br>
+        <button id="submitBtn" value="Submit" type="submit" class="button" style="">Check for the drivers</button>
+        <br>
+        <a href=customerProfile.html>
+            <button class="button" type="button">Beck</button>
+        </a>
+    </form>
+</div>
+</body>
+</html>

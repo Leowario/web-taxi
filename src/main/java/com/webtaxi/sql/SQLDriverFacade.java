@@ -1,6 +1,6 @@
 package com.webtaxi.sql;
 
-import com.webtaxi.users.Driver;
+import com.webtaxi.model.Driver;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,14 +12,14 @@ import java.util.PriorityQueue;
 import static com.webtaxi.sql.SQLDriverCommand.*;
 import static com.webtaxi.sql.SQLStatementFactory.getPreparedStatement;
 import static com.webtaxi.sql.SQLStatementFactory.getStatement;
-import static com.webtaxi.users.DriverQueueFactory.getDriversQueue;
+import static com.webtaxi.model.DriverQueueFactory.getDriversQueue;
 
 /**
  * @author Vitalii Usatyi
  */
-public class SQLDriverCommandExecutor {
+public class SQLDriverFacade {
 
-    private SQLDriverCommandExecutor() {
+    private SQLDriverFacade() {
 
     }
 

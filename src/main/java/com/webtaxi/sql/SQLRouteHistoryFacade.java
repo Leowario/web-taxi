@@ -1,8 +1,8 @@
 package com.webtaxi.sql;
 
-import com.webtaxi.users.Route;
-import com.webtaxi.users.RouteHistory;
-import com.webtaxi.users.RouteHistoryFactory;
+import com.webtaxi.model.Route;
+import com.webtaxi.model.RouteHistory;
+import com.webtaxi.model.RouteHistoryFactory;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +18,9 @@ import static com.webtaxi.sql.SQLStatementFactory.getStatement;
 /**
  * @author Vitalii Usatyi
  */
-public class SQLRouteHistoryCommandExecutor {
+public class SQLRouteHistoryFacade {
 
-    private SQLRouteHistoryCommandExecutor() {
+    private SQLRouteHistoryFacade() {
 
     }
 
@@ -32,7 +32,7 @@ public class SQLRouteHistoryCommandExecutor {
         }
     }
 
-    public static void addRouteToRouteHistory(Route route) {
+    public static boolean addRouteToRouteHistory(Route route) {
         try (PreparedStatement preparedStatement = getPreparedStatement(ADD_ROUTE_TO_ROUTE_HISTORY.sql())) {
             int index = 1;
             preparedStatement.setInt(index, route.getCustomerId());
@@ -40,8 +40,10 @@ public class SQLRouteHistoryCommandExecutor {
             preparedStatement.setString(++index, route.getStartPoint());
             preparedStatement.setString(++index, route.getEndPoint());
             preparedStatement.execute();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

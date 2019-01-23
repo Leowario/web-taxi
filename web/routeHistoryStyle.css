@@ -1,0 +1,36 @@
+body {
+    background-image: url("Asphalt.jpg");
+    min-width: 800px;
+    max-width: available;
+    margin: 20px auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+.content {
+    text-align: center;
+    padding: 20px 20px 10px;
+    border-radius: 10px;
+    color: white;
+    background: #636363;
+}
+
+button {
+    border: 1px solid #eeeeee;
+    margin: 15px;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background: #eee;
+    cursor: pointer;
+    text-align: right;
+}

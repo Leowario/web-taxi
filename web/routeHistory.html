@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Route history</title>
+    <link rel="stylesheet" href="routeHistoryStyle.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        let data = {
+            custId: sessionStorage.getItem("custId"),
+        };
+
+        $(document).ready(function () {
+            $.get("/routeHistory", $.param(data), function (responseJson) {
+                var $tr = $("<tr>").appendTo($("#table"));
+                $.each(responseJson, function (index, item) {
+                    $("<tr>").appendTo($("#table"))
+                        .append($("<th>").text(item["startPoint"]))
+                        .append($("<th>").text(item["endPoint"]))
+                        .append($("<th>").text(item["driver"].firstName))
+                        .append($("<th>").text(item["driver"].rating))
+                        .append($("<th>").text(item["driver"].car.carModel))
+                        .append($("<th>").text(item["driver"].car.carClass));
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="buttons">
+    <a href="customerProfile.html">
+        <button class="button">Beck to Profile</button>
+    </a>
+    <a href="routeDetails.html">
+        <button>Order a Taxi</button>
+    </a>
+</div>
+<div class="content">
+    <table style="width: 100%;" id="table">
+        <tr>
+            <th>Start point</th>
+            <th>End point</th>
+            <th>Driver Name</th>
+            <th>Driver Rating</th>
+            <th>Car model</th>
+            <th>Car class</th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

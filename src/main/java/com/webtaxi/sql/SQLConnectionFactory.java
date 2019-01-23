@@ -8,9 +8,9 @@ import java.sql.SQLException;
  * @author Vitalii Usatyi
  */
 public class SQLConnectionFactory {
-    private static final String DB_URL = "jdbc:mysql://192.168.1.71:3306/web_taxi?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String DB_URL = "jdbc:mysql://Asus_home:3306/web_taxi?useSSL=false&serverTimezone=UTC";
+    private static final String USER = "admin";
+    private static final String PASSWORD = "admin";
 
     static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, USER, PASSWORD);

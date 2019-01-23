@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver ist</title>
+    <link rel="stylesheet" href="driverListStyle.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        let data = {
+            taxiClass: sessionStorage.getItem("taxiClass"),
+        };
+        $(document).ready(function () {
+            $.get("/driverList", $.param(data), function (responseJson) {
+                var select = $("<seclet>").appendTo($("#label"));
+                $.each(responseJson, function (index, item) {
+                    let desc = "Name: " + item["firstName"]
+                        + " | Car: " + item["car"].carModel
+                        + " | Class: " + item["car"].carClass
+                        + " | Rating: " + item["rating"];
+                    $("#driver").appendTo($("#label"))
+                        .append($("<option>").text(desc).attr("value", item["drivId"]));
+                });
+            })
+        });
+        $(document).on("submit", "#orderForm", function (event) {
+            let point = document.getElementById("driver");
+            let driverId = point.options[point.selectedIndex].value;
+            sessionStorage.setItem("driverId", driverId);
+            window.location.href = "orderTaxi.html";
+            event.preventDefault();//Prevents submitting the form.
+        });
+    </script>
+</head>
+<body>
+<div class="title">
+    <h1>Choose a driver</h1>
+</div>
+<div class="content">
+    <form id="orderForm" method="post" action="/driverList">
+        <label id="label">
+            <select name="driver" required="required" multiple="multiple" id="driver" size="1"
+                    style="margin-bottom: 10px ">
+            </select>
+        </label>
+        <br>
+        <a href="routeDetails.html">
+            <button type="button">Beck</button>
+        </a>
+        <button type="submit">Continue</button>
+    </form>
+</div>
+</body>
+</html>

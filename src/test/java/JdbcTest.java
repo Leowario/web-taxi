@@ -1,7 +1,7 @@
-import com.webtaxi.users.Customer;
-import com.webtaxi.users.Driver;
-import com.webtaxi.users.Route;
-import com.webtaxi.users.RouteHistory;
+import com.webtaxi.model.Customer;
+import com.webtaxi.model.Driver;
+import com.webtaxi.model.Route;
+import com.webtaxi.model.RouteHistory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,9 +12,9 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.*;
-import static com.webtaxi.sql.SQLDriverCommandExecutor.selectAllAvailableDriversByCarClass;
-import static com.webtaxi.sql.SQLRouteHistoryCommandExecutor.*;
+import static com.webtaxi.sql.SQLCustomerFacade.*;
+import static com.webtaxi.sql.SQLDriverFacade.selectAllAvailableDriversByCarClass;
+import static com.webtaxi.sql.SQLRouteHistoryFacade.*;
 
 /**
  * @author Vitalii Usatyi

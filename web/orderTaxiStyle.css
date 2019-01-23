@@ -1,0 +1,35 @@
+body {
+    background-image: url("Asphalt.jpg");
+    min-width: 400px;
+    max-width: 700px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+p {
+    text-align: left;
+    margin-left: 300px;
+}
+
+button {
+    border: 1px solid #eeeeee;
+    margin: 8px;
+    border-radius: 3px;
+    padding: 7px 15px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.content {
+    padding-bottom: 0;
+    border-radius: 10px;
+    color: white;
+    background: #636363;
+}
+
+.title {
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background: gray;
+}

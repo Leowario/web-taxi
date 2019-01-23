@@ -1,6 +1,6 @@
 package com.webtaxi.servlets;
 
-import com.webtaxi.users.Customer;
+import com.webtaxi.model.Customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.webtaxi.servlets.ResponseContentTypeSetter.setContentType;
-import static com.webtaxi.sql.SQLCustomerCommandExecutor.addCustomer;
+import static com.webtaxi.servlets.ResponseContentTypeSetter.setTextType;
+import static com.webtaxi.sql.SQLCustomerFacade.addCustomer;
 
 /**
  * @author Vitalii Usatyi
@@ -35,10 +35,10 @@ public class SignUpServlet extends HttpServlet {
                 .build();
         boolean result = addCustomer(customer);
         if (result) {
-            setContentType(resp);
+            setTextType(resp);
             resp.getWriter().write("Registration complete");
         } else {
-            setContentType(resp);
+            setTextType(resp);
             resp.getWriter().write("Login is already exists");
         }
     }
