@@ -27,7 +27,7 @@
             let point = document.getElementById("driver");
             let driverId = point.options[point.selectedIndex].value;
             sessionStorage.setItem("driverId", driverId);
-            window.location.href = "checkDetails.html";
+            window.location.href = "orderTaxi.html";
             event.preventDefault();//Prevents submitting the form.
         });
         // start and end points will be in sessionStorage
@@ -36,17 +36,17 @@
 <body>
 <div class="title">
     <h1>Choose a driver</h1>
-    <p id="test"></p>
 </div>
 <div class="content">
     <form id="orderForm" method="post" action="/driverList">
         <label id="label">
-            <select name="driver" multiple="multiple" id="driver" size="1" style="margin-bottom: 10px ">
+            <select name="driver" required="required" multiple="multiple" id="driver" size="1"
+                    style="margin-bottom: 10px ">
             </select>
         </label>
         <br>
-        <a href="orderTaxi.html">
-            <button>Beck</button>
+        <a href="routeDetails.html">
+            <button type="button">Beck</button>
         </a>
         <button type="submit">Continue</button>
     </form>
